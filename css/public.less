@@ -1,0 +1,20 @@
+@color-white:#fff;
+@color-yellow:#ffff00;
+@color-green:#008800;
+@color-rgba:rgba(0,0,0, .3);
+
+@font-size:.26;
+
+@img-url:'../img/swiper/';
+
+.transition(@property:all,@duration: 1s,@time-function: linear,@delay: 0s) {
+  -webkit-transition: @arguments;
+  transition: @arguments;
+}
+
+/*animation */
+.animation(@name:bounce,@duration: 1s,@time-function: ease,@delay: 0s,@count:1,@direction:normal,@play-state:running,@fill-mode:none) {
+  -webkit-animation: @arguments;
+  animation: @arguments;
+}
+//.boxShadow(){}
