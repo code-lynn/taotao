@@ -1,0 +1,208 @@
+
+html {
+    font-size: 100px; /*640设计稿中:1REM=100PX*/
+}
+
+html, body {
+    height: 100%;
+    max-width: 640px;
+    overflow: hidden;
+}
+
+body {
+    position: relative;
+    z-index: -3;
+    -webkit-user-select: none;
+}
+
+.loading, .phone, .message, .cube, .swiper {
+    /*display: none;*/
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/*--LOADING--*/
+.loading {
+    background: #000;
+}
+
+.loading .title {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -2.2rem;
+    width: 100%;
+    height: 1.4rem;
+
+    color: #FFF;
+    text-align: center;
+    letter-spacing: .04rem;
+}
+
+.loading .title h1 {
+    margin-bottom: .2rem;
+    height: .75rem;
+    line-height: .75rem;
+    font-size: .5rem;
+}
+
+.loading .title h2 {
+    height: .45rem;
+    line-height: .45rem;
+    font-size: .26rem;
+}
+
+.loading .progress {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: .85rem 0 0 -2.3rem;
+    width: 4.6rem;
+    height: .3rem;
+    background: #FFF;
+    border-radius: .06rem;
+}
+
+.loading .progress .progressBox {
+    width: 0;
+    height: 100%;
+    border-radius: .06rem;
+
+    background: -webkit-linear-gradient(45deg, #5CB85C 25%, #74C274 25%, #74C274 50%, #5CB85C 50%, #5CB85C 75%, #74C274 75%);
+    background: linear-gradient(45deg, #5CB85C 25%, #74C274 25%, #74C274 50%, #5CB85C 50%, #5CB85C 75%, #74C274 75%);
+    background-size: .3rem .3rem;
+
+    -webkit-animation: loadingMove 1s linear infinite both;
+    animation: loadingMove 1s linear infinite both;
+
+    -webkit-transition: all 1s linear 0s;
+    transition: all 1s linear 0s;
+}
+
+/*--CUBE--*/
+.cube {
+    perspective: 1000px;
+    background: url("../img/swiper/bg33.png") no-repeat center center;
+    background-size: cover;
+}
+
+.cube .tip {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    margin-left: -1.97rem;
+    width: 3.94rem;
+    height: .44rem;
+    background: url("../img/zf_cubeTip.png") no-repeat;
+    background-size: 100% 100%;
+}
+
+.cube .return {
+    position: absolute;
+    top: .6rem;
+    left: .2rem;
+    z-index: 1000;
+    width: .5rem;
+    height: .5rem;
+    background: url("../img/zf_return.png") no-repeat;
+    background-size: 100% 100%;
+}
+
+.cube .cubeBox {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    margin: -2.55rem 0 0 -2.55rem;
+    width: 5.1rem;
+    height: 5.1rem;
+
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+
+    -webkit-transform: scale(0.6) rotateX(-30deg) rotateY(135deg);
+    transform: scale(0.6) rotateX(-30deg) rotateY(135deg);
+
+    -webkit-transition: all .3s;
+    transition: all .3s;
+}
+
+.cube .cubeBox li {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -2.55rem 0 0 -2.55rem;
+    width: 100%;
+    height: 100%;
+}
+
+.cube .cubeBox li:nth-child(1) {
+    background: url("../img/zf_cube1.png") no-repeat;
+    background-size: 100% 100%;
+    -webkit-transform: translateZ(2.55rem);
+    transform: translateZ(2.55rem);
+}
+
+.cube .cubeBox li:nth-child(2) {
+    background: url("../img/zf_cube5.png") no-repeat;
+    background-size: 100% 100%;
+    -webkit-transform: rotateY(180deg) translateZ(2.55rem);
+    transform: rotateY(180deg) translateZ(2.55rem);
+}
+
+.cube .cubeBox li:nth-child(3) {
+    background: url("../img/zf_cube2.png") no-repeat;
+    background-size: 100% 100%;
+    -webkit-transform: rotateY(90deg) translateZ(2.55rem);
+    transform: rotateY(90deg) translateZ(2.55rem);
+}
+
+.cube .cubeBox li:nth-child(4) {
+    background: url("../img/zf_cube4.png") no-repeat;
+    background-size: 100% 100%;
+    -webkit-transform: rotateY(-90deg) translateZ(2.55rem);
+    transform: rotateY(-90deg) translateZ(2.55rem);
+}
+
+.cube .cubeBox li:nth-child(5) {
+    background: url("../img/zf_cube3.png") no-repeat;
+    background-size: 100% 100%;
+    -webkit-transform: rotateX(-90deg) translateZ(2.55rem);
+    transform: rotateX(-90deg) translateZ(2.55rem);
+}
+
+.cube .cubeBox li:nth-child(6) {
+    background: url("../img/zf_cube6.png") no-repeat;
+    background-size: 100% 100%;
+    -webkit-transform: rotateX(90deg) translateZ(2.55rem);
+    transform: rotateX(90deg) translateZ(2.55rem);
+}
+
+/*--SWIPER--*/
+.swiper .return {
+    position: absolute;
+    top: .6rem;
+    left: .2rem;
+    z-index: 1000;
+    width: .5rem;
+    height: .5rem;
+    background: url("../img/zf_return.png") no-repeat;
+    background-size: 100% 100%;
+}
+
+.swiper-container{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    font-family: Microsoft JhengHei;
+}
+
+
+
+
+
+
+
+
+

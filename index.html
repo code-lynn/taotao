@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head lang="en">
+<head>
     <meta charset="UTF-8">
     <!-- viewport-->
     <meta name="viewport"
@@ -10,65 +10,103 @@
     <meta name="description" content="个人简历 Liu Yuelin resume"/>
     <!--title-->
     <title>Liu Yuelin resume</title>
-    <link type="image/x-icon" rel="icon" href="###"/>
+    <link type="image/x-icon" rel="icon" href="img/icon.png"/>
+
     <!--format css-->
-    <link rel="stylesheet" href="css/reset.min.css"/>
-    <!--import less-->
-    <link rel="stylesheet/less" href="css/index.less"/>
+    <link charset="utf-8" type="text/css" rel="stylesheet" href="css/reset.min.css"/>
+    <link charset="utf-8" type="text/css" rel="stylesheet" href="css/swiper.min.css"/>
+    <link charset="utf-8" type="text/css" rel="stylesheet" href="css/animate.css"/>
+    <!--format less-->
+    <link rel="stylesheet/less" href="css/slide.less"/>
     <script src="js/less-2.5.3.min.js"></script>
-    <!--import swiper.css-->
-    <link rel="stylesheet" href="css/swiper.min.css"/>
-    <!--import animate-->
-    <link rel="stylesheet" href="css/animate.css"/>
-    <!--mobile adaptation-->
-    <script>
+    <link charset="utf-8" type="text/css" rel="stylesheet" href="css/index.css"/>
+    <!--计算REM-->
+    <script type="text/javascript">
         ~function () {
             var desW=640, /*640的设计稿*/
                     winW=document.documentElement.clientWidth;
-            if(winW>640)return;
+            if(winW>960){
+//                document.documentElement.clientWidth='640px';
+                $(document).css('clientWidth','640px')
+                return;
+            };
             document.documentElement.style.fontSize=winW/desW*100+'px';
         }();
     </script>
 </head>
 <body>
+<!--header-->
 <header class="header"><img src="img/resume.png" alt=""></header>
-<main class="main" id="main">
-    <!--<section class="music" id="music">
-        <audio src="audio1/Proudboy.mp3" loop preload='none' id="Proudboy"></audio>
-    </section>-->
-    <div class="music">
-        <audio src="audio/Proudboy.mp3" loop preload="none" id="proudBoy"></audio>
+<!--LOADING-->
+<section class="loading" id="loading">
+    <div class="title">
+        <h1>资源文件加载中</h1>
+
+        <h2>敬请等待</h2>
     </div>
-    <section class="swiper-container">
-        <div class="swiper-wrapper">
-            <!--0、封面-->
-            <div class="swiper-slide slide1">
-                <div class="headImage">
-                    <img src="img/swiper/page1/2016.png" alt="">
-                    <img src="img/swiper/page1/xian1.png" alt="">
-                    <img src="img/swiper/page1/xian2.png" alt="">
-                    <img src="img/swiper/page1/xian3.png" alt="">
-                </div>
-                <div class="middle">
-                    <div class="circle">
-                        <img src="img/swiper/page1/xing1.png" alt="">
-                    </div>
-                    <img src="img/swiper/page1/xing2.png" alt="">
-                    <img src="img/swiper/page1/xing3.png" alt="">
-                    <img src="img/swiper/page1/xing3.png" alt="">
-                    <img src="img/swiper/page1/xing3.png" alt="">
-                    <img src="img/swiper/page1/xing3.png" alt="">
-                </div>
-                <div class="down">
-                    <p>应聘者 ：刘跃林</p>
-                    <p>应聘职位 ：WEB前端</p>
-                </div>
-                <div class="next">
-                    <img src="img/swiper/next.png" alt=""/>
-                </div>
+    <div class="progress">
+        <div class="progressBox"></div>
+    </div>
+</section>
+<!--FIRSTPAGE-->
+<section class="firstPage" id="firstPage">
+    <div class="">
+        <div class="headImage">
+            <img src="img/2016.png" alt="">
+            <img src="img/xian1.png" alt="">
+            <img src="img/xian2.png" alt="">
+            <img src="img/xian3.png" alt="">
+        </div>
+        <div class="middle">
+            <div class="circle">
+                <img src="img/xing1.png" alt="">
             </div>
+            <img src="img/xing2.png" alt="">
+            <img src="img/xing3.png" alt="">
+            <img src="img/xing3.png" alt="">
+            <img src="img/xing3.png" alt="">
+            <!--<img src="img/xing3.png" alt="">-->
+        </div>
+        <div class="down">
+            <p>应聘者 ：刘跃林</p>
+            <p>应聘职位 ：WEB前端</p>
+        </div>
+        <a class="next" href="#firstPage">
+            <img src="img/swiper/next.png" alt=""/>
+        </a>
+    </div>
+</section>
+<!--MUSIC-->
+<div class="music">
+    <audio src="audio/Proudboy.mp3" loop preload="none" id="proudBoy"></audio>
+</div>
+<!--CUBE-->
+<section class="cube" id="cube">
+    <div class="return"></div>
+    <ul class="cubeBox">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <div class="tip"></div>
+    <div class="down">
+        <div class="next">
+            <img src="img/swiper/next.png" alt=""/>
+        </div>
+    </div>
+
+</section>
+
+<!--SWIPER-->
+<section class="swiper" id="swiper">
+    <div class="return"></div>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
             <!--1、个人信息-->
-            <div class="swiper-slide slide2">
+            <div class="swiper-slide slide1 ">
                 <div class="headImage">
                     <img src="img/swiper/about.png" alt=""/>
                     <img src="img/swiper/xuan.png" alt=""/>
@@ -92,7 +130,7 @@
                 </div>
             </div>
             <!--2、专业技能-->
-            <div class="swiper-slide slide3">
+            <div class="swiper-slide slide2 ">
                 <div class="headImage">
                     <img src="img/swiper/work.png" alt=""/>
                 </div>
@@ -103,40 +141,42 @@
                 </div>
                 <div class="middle">
                     <p class="hl">
-                        <img src="img/swiper/slide2/html.png" alt=""/>
-                        <img src="img/swiper/xuan.png" alt=""/>熟练使用HTML
+                        <img src="img/swiper/html.png" alt=""/>
+                        <img src="img/swiper/chilun.png" alt=""/>熟练HTML、HTML5
+                        <!--技能详细介绍？？？？-->
+                        <em class="detail">熟练运用html css，有移动端开发经验</em>
                     </p>
                     <p class="cs">
-                        <img src="img/swiper/slide2/css-3-logo.png" alt=""/>
-                        <img src="img/swiper/xuan.png" alt=""/>熟练使用CSS
+                        <img src="img/swiper/css-3-logo.png" alt=""/>
+                        <img src="img/swiper/chilun.png" alt=""/>熟练CSS、CSS3
                     </p>
                     <p class="js">
-                        <img src="img/swiper/slide2/social-javascript.png" alt=""/>
-                        <img src="img/swiper/xuan.png" alt=""/>熟练使用JAVASCRIPT
+                        <img src="img/swiper/social-javascript.png" alt=""/>
+                        <img src="img/swiper/chilun.png" alt=""/>熟练JAVASCRIPT
                     </p>
                     <div class="otherSkills">
                         <div class="ajax">
-                            <img src="img/swiper/slide2/ajax.png" alt=""/>
+                            <img src="img/swiper/ajax.png" alt=""/>
                             <span>AJAX</span>
                         </div>
                         <div class="jquery">
-                            <img src="img/swiper/slide2/jquery.png" alt=""/>
+                            <img src="img/swiper/jquery.png" alt=""/>
                             <span>JQUERY</span>
                         </div>
                         <div class="less">
-                            <img src="img/swiper/slide2/less.png" alt=""/>
+                            <img src="img/swiper/less.png" alt=""/>
                             <span>LESS</span>
                         </div>
                         <div class="ejs">
-                            <img src="img/swiper/slide2/e.png" alt=""/>
+                            <img src="img/swiper/e.png" alt=""/>
                             <span>EJS</span>
                         </div>
                         <div class="node">
-                            <img src="img/swiper/slide2/node.png" alt=""/>
+                            <img src="img/swiper/node.png" alt=""/>
                             <span>NODE</span>
                         </div>
                         <div class="angular">
-                            <img src="img/swiper/slide2/social-angular.png" alt=""/>
+                            <img src="img/swiper/social-angular.png" alt=""/>
                             <span>ANGULAR</span>
                         </div>
                     </div>
@@ -146,7 +186,7 @@
                 </div>
             </div>
             <!--3、项目实践 -->
-            <div class="swiper-slide slide4">
+            <div class="swiper-slide slide3 ">
                 <div class="headImage">
                     <img src="img/swiper/experience.png" alt=""/>
                 </div>
@@ -186,7 +226,7 @@
                 </div>
             </div>
             <!--4、个人履历-->
-            <div class="swiper-slide slide5">
+            <div class="swiper-slide slide4 ">
                 <div class="headImage">
                     <img src="img/swiper/education.png" alt=""/>
                 </div>
@@ -200,27 +240,27 @@
                         <span></span>
                         <b></b>
                         <i></i>
-                        <img src="img/swiper/slide4/company1.png" alt="">
+                        <img src="img/swiper/company1.png" alt="">
                     </div>
                     <div class="box2">
                         <span></span>
                         <b></b>
                         <i></i>
-                        <img src="img/swiper/slide4/company2.png" alt="">
+                        <img src="img/swiper/company2.png" alt="">
                     </div>
                     <div class="box3">
                         <span></span>
                         <b></b>
                         <i></i>
-                        <img src="img/swiper/slide4/company3.png" alt="">
+                        <img src="img/swiper/company3.png" alt="">
                     </div>
                     <div class="box4">
                         <span></span>
                         <b></b>
-                        <i></i>
+                        <!--<i></i>
                         <span></span>
                         <b></b>
-                        <img src="img/swiper/slide4/company4.png" alt="">
+                        <img src="img/swiper/company4.png" alt="">-->
                     </div>
                 </div>
                 <div class="right">
@@ -246,22 +286,22 @@
                 </div>
             </div>
             <!--5、联系方式-->
-            <div class="swiper-slide slide6">
+            <div class="swiper-slide slide5 ">
                 <div class="bg">
                     <img src="img/swiper/bg55.png" alt="">
                 </div>
                 <div class="side1">
-                    <img src="img/swiper/slide5/liubianti.png" alt="">
+                    <img src="img/swiper/liubianti.png" alt="">
                 </div>
                 <div class="side2">
-                    <img src="img/swiper/slide5/liubianti.png" alt="">
+                    <img src="img/swiper/liubianti.png" alt="">
                 </div>
                 <div class="side3">
-                    <img src="img/swiper/slide5/liubianti.png" alt="">
+                    <img src="img/swiper/liubianti.png" alt="">
                 </div>
                 <div class="middle">
-                    <img src="img/swiper/slide5/corner1.png" alt="">
-                    <img src="img/swiper/slide5/corner2.png" alt="">
+                    <img src="img/swiper/corner1.png" alt="">
+                    <img src="img/swiper/corner2.png" alt="">
                     <div class="info">
                         <dl>
                             <dt>联系方式/<span>CONTACT ME</span></dt>
@@ -277,13 +317,13 @@
                 </div>
             </div>
             <!--自我评价-->
-            <div class="swiper-slide slide7">
+            <div class="swiper-slide slide6 ">
                 <div class="bg">
-                    <img src="img/swiper/slide5/6-1.png" alt="">
-                    <img src="img/swiper/slide5/6-2.png" alt="">
-                    <img src="img/swiper/slide5/6-3.png" alt="">
-                    <img src="img/swiper/slide5/6-4.png" alt="">
-                    <img src="img/swiper/slide5/6-5.png" alt="">
+                    <img src="img/swiper/6-1.png" alt="">
+                    <img src="img/swiper/6-2.png" alt="">
+                    <img src="img/swiper/6-3.png" alt="">
+                    <img src="img/swiper/6-4.png" alt="">
+                    <img src="img/swiper/6-5.png" alt="">
                 </div>
                 <div class="middle">
                     <span class="me">自我评价</span>
@@ -296,11 +336,14 @@
                 </div>
             </div>
         </div>
-    </section>
-</main>
-<footer></footer>
-<!--import swiper.js-->
-<script src="js/swiper.min.js"></script>
-<script src="js/index.js"></script>
+    </div>
+</section>
+
+<!--导入需要的JS-->
+<script charset="utf-8" type="text/javascript" src="js/zepto.min.js"></script>
+<script charset="utf-8" type="text/javascript" src="js/swiper.min.js"></script>
+<!--<script charset="utf-8" type="text/javascript" src="js/makisu.min.js"></script>-->
+<script charset="utf-8" type="text/javascript" src="js/fastclick.min.js"></script>
+<script charset="utf-8" type="text/javascript" src="js/index.js"></script>
 </body>
 </html>
