@@ -43,15 +43,15 @@ body {
 
 .loading .title h1 {
     margin-bottom: .2rem;
-    height: .75rem;
-    line-height: .75rem;
+    height: .6rem;
+    line-height: .6rem;
     font-size: .5rem;
 }
 
 .loading .title h2 {
-    height: .45rem;
-    line-height: .45rem;
-    font-size: .26rem;
+    height: .5rem;
+    line-height: .5rem;
+    font-size: .4rem;
 }
 
 .loading .progress {
@@ -90,7 +90,7 @@ body {
 
 .cube .tip {
     position: absolute;
-    bottom: 1.5rem;
+    bottom: 1.8rem;
     left: 50%;
     margin-left: -1.97rem;
     width: 3.94rem;

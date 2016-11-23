@@ -988,15 +988,15 @@
       img:nth-child(3){
         position: absolute;
         top: 7.8rem;
-        left: 1.15rem;
+        right: 2.9rem;
         width: 2.35rem;
         height: 1.6rem;
 
       }
       img:nth-child(4){
         position: absolute;
-        top: 6.8rem;
-        left: .5rem;
+        top: 7rem;
+        right: 4.4rem;
         width: 1.5rem;
         height: 1rem;
       }
@@ -1102,6 +1102,9 @@
     .next {
       .animation(@name: fadeInUp,@duration: 1s,@time-function: ease-out,@delay: .5s,@direction: alternate-reverse,@count: infinite,@fill-mode: both);
     }
+  }
+  .tip{
+    .animation(@name: my-bounce,@duration: 3s,@time-function:linear,@count: infinite,@fill-mode: both);
   }
 
 }
@@ -1254,3 +1257,63 @@
     transform: rotate(360deg);
   }
 }
+
+@-webkit-keyframes circleY {
+  from {
+    -webkit-transform: rotate3d(0,1,0, 0deg);
+    transform: rotate3d(0,1,0, 0deg);
+  }
+  to {
+    -webkit-transform: rotate3d(0,1,0, 360deg);
+    transform: rotate3d(0,1,0, 360deg);
+  }
+}
+@keyframes circleY {
+  from {
+    -webkit-transform: rotate3d(0,1,0, 0deg);
+    transform: rotate3d(0,1,0, 0deg);
+  }
+  to {
+    -webkit-transform: rotate3d(0,1,0, 360deg);
+    transform: rotate3d(0,1,0, 360deg);
+  }
+}
+/*my-bounce*/
+@keyframes my-bounce {
+  from, 20%, 40%, 60%, 80%, to {
+    /*贝塞尔曲线*/
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+  0% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+
+  20% {
+    -webkit-transform: scale3d(1.1, 1.1, 1.1);
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
+
+  40% {
+    -webkit-transform: scale3d(.9, .9, .9);
+    transform: scale3d(.9, .9, .9);
+  }
+
+  60% {
+    -webkit-transform: scale3d(1.03, 1.03, 1.03);
+    transform: scale3d(1.03, 1.03, 1.03);
+  }
+
+  80% {
+    -webkit-transform: scale3d(.97, .97, .97);
+    transform: scale3d(.97, .97, .97);
+  }
+
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+

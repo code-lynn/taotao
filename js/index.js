@@ -11,6 +11,12 @@
 
     pro.queryURLParameter = queryURLParameter;
 }(String.prototype);
+/*阻止系统默认事件  阻止冒泡*/
+$(document).on("touchmove",function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+});
+
 
 /*--LOADING--*/
 var loadingRender = (function () {
@@ -147,11 +153,11 @@ var cubeRender = (function () {
         /*判断旋转方向*/
         var rX=(Math.abs(rotateX))%360;
         if((rX<90&&rX>0)||(rX>270&&rX<360)){
-            rotateY = rotateY + changeX / 3;
+            rotateY = rotateY + changeX / 4;
         }else{
-            rotateY = rotateY - changeX / 3;
+            rotateY = rotateY - changeX / 4;
         }
-        rotateX = rotateX - changeY / 3;
+        rotateX = rotateX - changeY / 4;
 
 
         $(this).attr({
@@ -160,7 +166,7 @@ var cubeRender = (function () {
         }).css('transform', 'scale(0.6) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg)');
     }
 
-    //->PC拖拽处理
+    //->PC拖拽处理（PC端-未启动）
     function dragDown(ev) {
         $cubeBox.attr({
             strX: ev.clientX,
