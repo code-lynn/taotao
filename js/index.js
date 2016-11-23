@@ -20,13 +20,15 @@ $(document).on("touchmove",function (e) {
 
 /*--LOADING--*/
 var loadingRender = (function () {
+    /* ../img/swiper/ */
     var ary = ["6-1.png", "6-2.png", "6-3.png", "6-4.png", "6-5.png", "about.png", "ajax.png", "bg1.png", "bg2.jpg", "bg3.jpg", "bg33.png", "bg44.png", "bg5.jpg", "bg55.png", "bg6.jpg", "company1.png", "company2.png", "company3.png", "company4.png", "corner1.png", "corner2.png", "css-3-logo.png", "e.png", "education.png", "experience.png", "html.png", "jquery.png", "less.png", "liubianti.png", "next.png", "node.png", "pingjia.png", "skills.png", "social-angular.png", "social-javascript.png", "work.png", "xuan.png"];
-
+    /* ../img/ */
+    var arr=[ '2016.png','man.png', 'resume.png', 'xian1.png', 'xian2.png', 'xian3.png', 'xing1.png', 'xing2.png', 'xing3.png', 'zf_cube1.png', 'zf_cube2.png', 'zf_cube3.png', 'zf_cube4.png', 'zf_cube5.png', 'zf_cube6.png', 'zf_cubeBg.jpg', 'zf_cubeTip.png', 'zf_outline.png', 'zf_return.png' ];
     //->获取需要操作的元素
     var $loading = $('#loading'),
         $progressBox = $loading.find('.progressBox');
     var step = 0,
-        total = ary.length;
+        total = ary.length+arr.length;
 
     return {
         init: function () {
@@ -40,10 +42,10 @@ var loadingRender = (function () {
                     step++;
                     $progressBox.css('width', step / total * 100 + '%');
                     oImg = null;
-
-                    //->所有图片都已经加载完毕:关闭LOADING,显示PHONE
                     if (step === total) {
-                        if (page === 0) return;
+                        console.log(step)
+                        console.log(total)
+                        // if (page === 0) return;
                         window.setTimeout(function () {
                             $loading.css('display', 'none');
                             firstRender.init();
@@ -51,6 +53,30 @@ var loadingRender = (function () {
                     }
                 }
             });
+            $.each(arr, function (index, item) {
+                var oImg = new Image;
+                oImg.src = 'img/' + item;
+                oImg.onload = function () {
+                    step++;
+                    $progressBox.css('width', step / total * 100 + '%');
+                    oImg = null;
+                    if (step === total) {
+                        console.log(step)
+                        console.log(total)
+                        // if (page === 0) return;
+                        window.setTimeout(function () {
+                            $loading.css('display', 'none');
+                            firstRender.init();
+                        }, 2000);
+                    }
+                }
+            });
+            /*音频预加载？？？*/
+            // $('#proudBoy').oncanplay=function () {
+                //->所有图片和音频都已经加载完毕:关闭LOADING,显示PHONE
+
+            // };
+
         }
     }
 })();
@@ -266,7 +292,7 @@ var cubeRender = (function () {
 /*--SWIPER--*/
 var swiperRender = (function () {
     var $swiper = $('#swiper'),
-        $makisu = $('#makisu'),
+        // $makisu = $('#makisu'),
         $return = $swiper.children('.return');
 
     //->effect one:实现每一屏幕滑动切换后控制页面的动画
@@ -324,17 +350,17 @@ var swiperRender = (function () {
             mySwiper.slideTo(index, 0);
 
             //->给返回按钮绑定单击事件
-            if (lx === 100) {
+            // if (lx === 100) {
                 $return.on('click', function () {
                     $swiper.css('display', 'none');
                     $('#cube').css('display', 'block');
                 });
-            } else {
-                $return.singleTap(function () {
-                    $swiper.css('display', 'none');
-                    $('#cube').css('display', 'block');
-                });
-            }
+            // } else {
+            //     $return.singleTap(function () {
+            //         $swiper.css('display', 'none');
+            //         $('#cube').css('display', 'block');
+            //     });
+            // }
         }
     }
 })();
@@ -343,12 +369,11 @@ var swiperRender = (function () {
 var urlObj = window.location.href.queryURLParameter(),
     page = parseFloat(urlObj['page']),
     lx = parseFloat(urlObj['lx']);
-console.log(lx)
+console.log(page)
 page === 0 || isNaN(page) ? loadingRender.init() : null;
-page === 1 ? phoneRender.init() : null;
-page === 2 ? messageRender.init() : null;
-page === 3 ? cubeRender.init() : null;
-page == 4 ? swiperRender.init(0) : null;
+page === 1 ? firstRender.init() : null;
+page === 2 ? cubeRender.init() : null;
+page === 3 ? swiperRender.init(1) : null;
 
 /*if (lx === 100) {
     $('body').css('cursor', 'pointer');

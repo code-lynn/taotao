@@ -1,17 +1,34 @@
 @import (reference) 'public';
 /*MUSIC*/
 .header {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: .6rem;
   z-index: 10;
-  img{
-    width: 100%;
+  overflow: hidden;
+  .wheel{
+    width: 12.88rem;
     height: 100%;
+    margin: 0 auto;
+    .animation(@name: headerMove,@duration: 3s,@count:infinite,@fill-mode: both);
+    img{
+      width: 6.4rem;
+      height: 100%;
+    }
+  }
+
+}
+@keyframes headerMove {
+  from{
+    -webkit-transform: translate(0rem,0rem);
+    transform: translate(0rem,0rem);
+  }
+  to{
+    -webkit-transform: translate(-6.5rem,0rem);
+    transform: translate(-6.5rem,0rem);
   }
 }
+
+
 .music{
   width: 0.6rem;
   height: 0.6rem;
@@ -201,7 +218,7 @@
   /*slide1*/
   .slide1 {
     opacity: 0;
-    .transition(@property: opacity,@duration: .5s);
+    .transition(@property: opacity,@duration: .3s);
     background: url("@{img-url}bg1.png") no-repeat;
     background-size: 100% 100%;
     overflow: hidden;
@@ -303,7 +320,7 @@
   /*slide2*/
   .slide2 {
     opacity: 0;
-    .transition(@property: opacity,@duration: .5s);
+    .transition(@property: opacity,@duration: .3s);
     .slide1;
     background: url("@{img-url}bg2.jpg") no-repeat;
     .headImage {
@@ -474,7 +491,7 @@
   /*slide3*/
   .slide3 {
     opacity: 0;
-    .transition(@property: opacity,@duration: .5s);
+    .transition(@property: opacity,@duration: .3s);
     background: url("@{img-url}bg3.jpg") no-repeat;
     background-size: 100% 100%;
     .headImage {
@@ -592,7 +609,7 @@
   /*slide4*/
   .slide4 {
     opacity: 0;
-    .transition(@property: opacity,@duration: .5s);
+    .transition(@property: opacity,@duration: .3s);
     background: url("@{img-url}bg2.jpg") no-repeat;
     background-size: 100% 100%;
     .headImage {
@@ -814,7 +831,7 @@
   /*slide5*/
   .slide5 {
     opacity: 0;
-    .transition(@property: opacity,@duration: .5s);
+    .transition(@property: opacity,@duration: .3s);
     background: url("@{img-url}bg5.jpg") no-repeat;
     background-size: 100% 100%;
     .bg{
@@ -846,18 +863,18 @@
         width: 100%;
         height: 100%;
       }
-    }
-    .side3{
-      position: absolute;
-      top: 4.5rem;
-      right: .5rem;
-      width: 1rem;
-      height: 1rem;
-      img{
-        width: 100%;
-        height: 100%;
       }
-    }
+      .side3{
+        position: absolute;
+        top: 4.5rem;
+        right: .5rem;
+        width: 1rem;
+        height: 1rem;
+        img{
+          width: 100%;
+          height: 100%;
+        }
+      }
     .middle{
       position: absolute;
       top: 3rem;
@@ -966,7 +983,7 @@
   /*slide6*/
   .slide6 {
     opacity: 0;
-    .transition(@property: opacity,@duration: .5s);
+    .transition(@property: opacity,@duration: .3s);
     background: url("@{img-url}bg6.jpg") no-repeat;
     background-size: 100% 100%;
     .bg{
@@ -976,6 +993,7 @@
         position: absolute;
         top: 0;
         right: 0;
+        z-index: 2;
       }
       img:nth-child(2){
         position: absolute;
@@ -987,18 +1005,19 @@
       }
       img:nth-child(3){
         position: absolute;
-        top: 7.8rem;
-        right: 2.9rem;
+        top: 6.3rem;
+        right: 1.6rem;
         width: 2.35rem;
         height: 1.6rem;
-
+        z-index: 3;
       }
       img:nth-child(4){
         position: absolute;
-        top: 7rem;
-        right: 4.4rem;
-        width: 1.5rem;
-        height: 1rem;
+        top: 6rem;
+        right: 3rem;
+        width: 2.5rem;
+        height: 1.5rem;
+        z-index: 1;
       }
       img:nth-child(5){
         position: absolute;
@@ -1019,6 +1038,7 @@
       -webkit-border-radius: .06rem;
       border-radius: .06rem;
       background: lighten(@color-rgba,10%);
+      z-index: 5;
       .me{
         //position: absolute;
         //top: 0;
@@ -1046,6 +1066,7 @@
       position: absolute;
       bottom: .3rem;
       left: 2.6rem;
+      z-index: 10;
       img {
         width: 1rem;
         height: .7rem;
@@ -1061,13 +1082,13 @@
           .animation(@name: swing,@duration: 1.5s,@delay: 1.5s,@fill-mode: both);
         }
         img:nth-child(3){
-          .animation(@name: bounceInLeft,@duration: 1.5s,@delay: .6s,@fill-mode: both);
+          .animation(@name: bounceInRight,@duration: 1.5s,@delay: .6s,@fill-mode: both);
         }
         img:nth-child(4){
-          .animation(@name: bounceInLeft,@duration: 1.5s,@delay: .9s,@fill-mode: both);
+          .animation(@name: bounceInLeft,@duration: 1.5s,@delay: .6s,@fill-mode: both);
         }
         img:nth-child(5){
-          .animation(@name: bounceInLeft,@duration: 1.5s,@fill-mode: both);
+          .animation(@name: bounceInLeft,@duration: .9s,@fill-mode: both);
         }
       }
       .middle{
