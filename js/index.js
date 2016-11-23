@@ -23,7 +23,7 @@ var loadingRender = (function () {
     /* ../img/swiper/ */
     var ary = ["6-1.png", "6-2.png", "6-3.png", "6-4.png", "6-5.png", "about.png", "ajax.png", "bg1.png", "bg2.jpg", "bg3.jpg", "bg33.png", "bg44.png", "bg5.jpg", "bg55.png", "bg6.jpg", "company1.png", "company2.png", "company3.png", "company4.png", "corner1.png", "corner2.png", "css-3-logo.png", "e.png", "education.png", "experience.png", "html.png", "jquery.png", "less.png", "liubianti.png", "next.png", "node.png", "pingjia.png", "skills.png", "social-angular.png", "social-javascript.png", "work.png", "xuan.png"];
     /* ../img/ */
-    var arr=[ '2016.png','man.png', 'resume.png', 'xian1.png', 'xian2.png', 'xian3.png', 'xing1.png', 'xing2.png', 'xing3.png', 'zf_cube1.png', 'zf_cube2.png', 'zf_cube3.png', 'zf_cube4.png', 'zf_cube5.png', 'zf_cube6.png', 'zf_cubeBg.jpg', 'zf_cubeTip.png', 'zf_outline.png', 'zf_return.png' ];
+    var arr=[ '2016.png','man.png', 'resume.png', 'xian1.png', 'xian2.png', 'xian3.png', 'xing1.png', 'xing2.png', 'xing3.png', 'cube1.png', 'cube2.png', 'cube3.png', 'cube4.png', 'cube5.png', 'cube6.png', 'zf_cubeBg.jpg', 'cubeTip.png', 'zf_outline.png', 'return.png' ];
     //->获取需要操作的元素
     var $loading = $('#loading'),
         $progressBox = $loading.find('.progressBox');
