@@ -61,8 +61,6 @@ var loadingRender = (function () {
                     $progressBox.css('width', step / total * 100 + '%');
                     oImg = null;
                     if (step === total) {
-                        console.log(step)
-                        console.log(total)
                         // if (page === 0) return;
                         window.setTimeout(function () {
                             $loading.css('display', 'none');
@@ -369,7 +367,7 @@ var swiperRender = (function () {
 var urlObj = window.location.href.queryURLParameter(),
     page = parseFloat(urlObj['page']),
     lx = parseFloat(urlObj['lx']);
-console.log(page)
+// console.log(page)
 page === 0 || isNaN(page) ? loadingRender.init() : null;
 page === 1 ? firstRender.init() : null;
 page === 2 ? cubeRender.init() : null;
