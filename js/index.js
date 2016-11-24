@@ -120,12 +120,12 @@ var firstRender = function () {
             });
             /*next按钮*/
             /*PC端 --click用在移动端有300ms延迟*/
-           /* $next.on('click', function () {
-                $firstPage.css('display', 'none');
-                cubeRender.init();
-            });*/
-            /*移动端*/
-            $next.tap(function () {
+            /* $next.on('click', function () {
+             $firstPage.css('display', 'none');
+             cubeRender.init();
+             });*/
+            /*移动端--点击*/
+            $next.singleTap(function () {
                 $firstPage.css('display', 'none');
                 cubeRender.init();
             });
@@ -141,6 +141,7 @@ var cubeRender = (function () {
         $return = $cube.children('.return'),
         $down = $cube.find('.down'),
         $next = $down.find('.next');
+    var index = 0;
     //->滑动的处理
     function isSwipe(changeX, changeY) {
         return Math.abs(changeX) > 30 || Math.abs(changeY) > 0;
@@ -171,8 +172,7 @@ var cubeRender = (function () {
             changeY = parseFloat($(this).attr('changeY'));
         var rotateX = parseFloat($(this).attr('rotateX')),
             rotateY = parseFloat($(this).attr('rotateY'));
-        var index=0;
-            if (isSwipe(changeX, changeY) === false) return;
+        if (isSwipe(changeX, changeY) === false) return;
         /*判断旋转方向*/
         var rX = (Math.abs(rotateX)) % 360;
         if ((rX < 90 && rX > 0) || (rX > 270 && rX < 360)) {
@@ -192,18 +192,17 @@ var cubeRender = (function () {
     return {
         init: function () {
             $cube.css('display', 'block');
-
             //->魔方区域的滑动--touch实现swipeUp
             $cubeBox.attr({
                 rotateX: -35,
                 rotateY: 45
             }).on('touchstart', start).on('touchmove', move).on('touchend', end);
 
-            //->每一个页面的点击操作
+            //->每一个页面的点击操作--singleTap
             $cubBoxLis.singleTap(function () {
                 index = $(this).index();
                 $cube.css('display', 'none');
-                swiperRender.init(index+1);
+                swiperRender.init(index + 1);
             });
 
             /*返回按钮*/
@@ -213,15 +212,15 @@ var cubeRender = (function () {
             });
             // }
 
-            /*next按钮*/
+            /*next按钮--滑动 点击click*/
             $down.on('swipeUp', function () {
                 $cube.css('display', 'none');
-                swiperRender.init(index);
+                swiperRender.init(index + 1);
             });
-            // $next.on('click', function () {
-            //     $cube.css('display', 'none');
-            //     swiperRender.init(index);
-            // });
+            $next.on('click', function () {
+                $cube.css('display', 'none');
+                swiperRender.init(index + 1);
+            });
         }
     }
 })();
@@ -229,7 +228,7 @@ var cubeRender = (function () {
 /*--SWIPER--*/
 var swiperRender = (function () {
     var $swiper = $('#swiper'),
-        // $makisu = $('#makisu'),
+    // $makisu = $('#makisu'),
         $return = $swiper.children('.return');
 
     //->effect one:实现每一屏幕滑动切换后控制页面的动画
@@ -262,7 +261,7 @@ var swiperRender = (function () {
                 loop: true,
                 /*可循换-->因为loop之后swiper在首尾默认增加了两个滑块-要让首尾各添加的滑块显示正确的效果*/
                 onSlideChangeEnd: function (swiper) {
-                    console.log(swiper)
+                    //console.log(swiper)
                     var slides = swiper.slides,
                         curIndex = swiper.activeIndex;
                     var lastIndexSlide = slides.length - 1,
@@ -286,11 +285,7 @@ var swiperRender = (function () {
                     /*打字处理*/
                     var str = '本人做事有耐心，爱思考，适应能力强，注重团队合作！爱学习爱分享，轻度代码洁癖，希望能成为贵公司的一员，共同探索代码的灵动世界！';
                     var n = 0;
-
-
-
-                    console.log(curIndex)
-
+                    //console.log(curIndex)
                     if ((curIndex == 0) || (curIndex == trueIndexSlide)) {
                         $content.html('');
                         function type() {
@@ -301,6 +296,7 @@ var swiperRender = (function () {
                                 type();
                             }, 150);
                         }
+
                         setTimeout(function () {
                             type();
                         }, 2000);
