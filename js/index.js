@@ -12,7 +12,7 @@
     pro.queryURLParameter = queryURLParameter;
 }(String.prototype);
 /*阻止系统默认事件  阻止冒泡*/
-$(document).on("touchmove",function (e) {
+$(document).on("touchmove", function (e) {
     e.preventDefault();
     e.stopPropagation();
 });
@@ -23,12 +23,12 @@ var loadingRender = (function () {
     /* ../img/swiper/ */
     var ary = ["6-1.png", "6-2.png", "6-3.png", "6-4.png", "6-5.png", "about.png", "ajax.png", "bg1.png", "bg2.jpg", "bg3.jpg", "bg33.png", "bg44.png", "bg5.jpg", "bg55.png", "bg6.jpg", "company1.png", "company2.png", "company3.png", "company4.png", "corner1.png", "corner2.png", "css-3-logo.png", "e.png", "education.png", "experience.png", "html.png", "jquery.png", "less.png", "liubianti.png", "next.png", "node.png", "pingjia.png", "skills.png", "social-angular.png", "social-javascript.png", "work.png", "xuan.png"];
     /* ../img/ */
-    var arr=[ '2016.png','cube1.png','cube2.png','cube3.png','cube4.png','cube5.png','cube6.png','cubeTip.png','man.png','resume.png','return.png','xian1.png','xian2.png','xian3.png','xing1.png','xing2.png','xing3.png' ];
+    var arr = ['2016.png', 'cube6.png', 'cube4.png', 'cube6.png', 'cube4.png', 'cube6.png', 'cube6.png', 'cubeTip.png', 'man.png', 'resume.png', 'return.png', 'xian1.png', 'xian2.png', 'xian3.png', 'xing1.png', 'xing2.png', 'xing3.png'];
     //->获取需要操作的元素
     var $loading = $('#loading'),
         $progressBox = $loading.find('.progressBox');
     var step = 0,
-        total = ary.length+arr.length;
+        total = ary.length + arr.length;
 
     return {
         init: function () {
@@ -43,8 +43,6 @@ var loadingRender = (function () {
                     $progressBox.css('width', step / total * 100 + '%');
                     oImg = null;
                     if (step === total) {
-                        console.log(step)
-                        console.log(total)
                         // if (page === 0) return;
                         window.setTimeout(function () {
                             $loading.css('display', 'none');
@@ -71,7 +69,7 @@ var loadingRender = (function () {
             });
             /*音频预加载？？？*/
             // $('#proudBoy').oncanplay=function () {
-                //->所有图片和音频都已经加载完毕:关闭LOADING,显示PHONE
+            //->所有图片和音频都已经加载完毕:关闭LOADING,显示PHONE
 
             // };
 
@@ -114,23 +112,23 @@ var firstRender = function () {
         init: function () {
             musicRender.init();
             $firstPage.css('display', 'block');
-            /*点击、滑动进入魔方页面*/
-            /*PC端用mouse系列解决--怎么辨别PC还是移动端？？？？*/
+
+            /*点击、滑动进入魔方页面 --swipeUp实现*/
             $firstPage.on('swipeUp', function () {
                 $firstPage.css('display', 'none');
                 cubeRender.init();
             });
             /*next按钮*/
-            /*PC端*/
-            $next.on('click', function () {
-                $firstPage.css('display', 'none');
-                cubeRender.init();
-            });
-            /*移动端*/
-            /*$next.tap(function () {
+            /*PC端 --click用在移动端有300ms延迟*/
+           /* $next.on('click', function () {
                 $firstPage.css('display', 'none');
                 cubeRender.init();
             });*/
+            /*移动端*/
+            $next.tap(function () {
+                $firstPage.css('display', 'none');
+                cubeRender.init();
+            });
         }
     }
 }();
@@ -173,12 +171,13 @@ var cubeRender = (function () {
             changeY = parseFloat($(this).attr('changeY'));
         var rotateX = parseFloat($(this).attr('rotateX')),
             rotateY = parseFloat($(this).attr('rotateY'));
-        if (isSwipe(changeX, changeY) === false) return;
+        var index=0;
+            if (isSwipe(changeX, changeY) === false) return;
         /*判断旋转方向*/
-        var rX=(Math.abs(rotateX))%360;
-        if((rX<90&&rX>0)||(rX>270&&rX<360)){
+        var rX = (Math.abs(rotateX)) % 360;
+        if ((rX < 90 && rX > 0) || (rX > 270 && rX < 360)) {
             rotateY = rotateY + changeX / 4;
-        }else{
+        } else {
             rotateY = rotateY - changeX / 4;
         }
         rotateX = rotateX - changeY / 4;
@@ -190,99 +189,39 @@ var cubeRender = (function () {
         }).css('transform', 'scale(0.6) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg)');
     }
 
-    //->PC拖拽处理（PC端-未启动）
-    function dragDown(ev) {
-        $cubeBox.attr({
-            strX: ev.clientX,
-            strY: ev.clientY,
-            changeX: 0,
-            changeY: 0
-        });
-        $(document).on('mousemove', dragMove);
-        $(document).on('mouseup', dragEnd);
-    }
-
-    function dragMove(ev) {
-        var changeX = ev.clientX - $cubeBox.attr('strX'),
-            changeY = ev.clientY - $cubeBox.attr('strY');
-        $cubeBox.attr({
-            changeX: changeX,
-            changeY: changeY
-        });
-    }
-
-    function dragEnd(ev) {
-        var changeX = parseFloat($cubeBox.attr('changeX')),
-            changeY = parseFloat($cubeBox.attr('changeY'));
-        var rotateX = parseFloat($cubeBox.attr('rotateX')),
-            rotateY = parseFloat($cubeBox.attr('rotateY'));
-        if (isSwipe(changeX, changeY) === false) return;
-        rotateX = rotateX - changeY / 3;
-        rotateY = rotateY + changeX / 3;
-        $cubeBox.attr({
-            rotateX: rotateX,
-            rotateY: rotateY
-        }).css('transform', 'scale(0.6) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg)');
-
-        $(document).off('mousemove', dragMove);
-        $(document).off('mouseup', dragEnd);
-    }
-
     return {
         init: function () {
             $cube.css('display', 'block');
 
-            //->魔方区域的滑动
-           /* if (lx === 100) {
-                $cubeBox.attr({
-                    rotateX: -35,
-                    rotateY: 45
-                });
-                $cubeBox.on('mousedown', dragDown);
-            } else {*/
-                $cubeBox.attr({
-                    rotateX: -35,
-                    rotateY: 45
-                }).on('touchstart', start).on('touchmove', move).on('touchend', end);
-            //}
+            //->魔方区域的滑动--touch实现swipeUp
+            $cubeBox.attr({
+                rotateX: -35,
+                rotateY: 45
+            }).on('touchstart', start).on('touchmove', move).on('touchend', end);
 
             //->每一个页面的点击操作
-            /*lx是什么？？？==100？？？？*/
-            if (lx === 100) {
-                $cubBoxLis.on('click', function () {
-                    var index = $(this).index();
-                    $cube.css('display', 'none');
-                    swiperRender.init(index);
-                });
-            } else {
-                $cubBoxLis.singleTap(function () {
-                    var index = $(this).index();
-                    $cube.css('display', 'none');
-                    swiperRender.init(index);
-                });
-            }
+            $cubBoxLis.singleTap(function () {
+                index = $(this).index();
+                $cube.css('display', 'none');
+                swiperRender.init(index+1);
+            });
+
             /*返回按钮*/
-            if (lx === 100) {
-                $return.on('click', function () {
-                    $cube.css('display', 'none');
-                    $('#firstPage').css('display', 'block');
-                });
-            } else {
-                $return.singleTap(function () {
-                    $cube.css('display', 'none');
-                    $('#firstPage').css('display', 'block');
-                });
-            }
+            $return.singleTap(function () {
+                $cube.css('display', 'none');
+                $('#firstPage').css('display', 'block');
+            });
+            // }
 
             /*next按钮*/
             $down.on('swipeUp', function () {
                 $cube.css('display', 'none');
-                swiperRender.init(1);
+                swiperRender.init(index);
             });
-            $next.on('click', function () {
-                $cube.css('display', 'none');
-                swiperRender.init(1);
-            });
+            // $next.on('click', function () {
+            //     $cube.css('display', 'none');
+            //     swiperRender.init(index);
+            // });
         }
     }
 })();
@@ -294,7 +233,7 @@ var swiperRender = (function () {
         $return = $swiper.children('.return');
 
     //->effect one:实现每一屏幕滑动切换后控制页面的动画
-   /* function change(example) {
+    /* function change(example) {
      var slidesAry = example.slides,
      activeIndex = example.activeIndex;
      $.each(slidesAry, function (index, item) {
@@ -309,23 +248,26 @@ var swiperRender = (function () {
     return {
         init: function (index) {
             $swiper.css('display', 'block');
-
+            var $slide6 = $('.slide6'),
+                $content = $slide6.find('.content');
             //->初始化SWIPER实现六个页面之间的切换
             var mySwiper = new Swiper('.swiper-container', {
                 /*effect one*/
-               /* effect: 'coverflow',
-                onTransitionEnd: change,
-                onInit: change,*/
+                /* effect: 'coverflow',
+                 onTransitionEnd: change,
+                 onInit: change,*/
 
                 /*effect two*/
                 direction: 'vertical',//horizontal  vertical
                 loop: true,
-                 /*可循换-->因为loop之后swiper在首尾默认增加了两个滑块-要让首尾各添加的滑块显示正确的效果*/
+                /*可循换-->因为loop之后swiper在首尾默认增加了两个滑块-要让首尾各添加的滑块显示正确的效果*/
                 onSlideChangeEnd: function (swiper) {
+                    console.log(swiper)
                     var slides = swiper.slides,
                         curIndex = swiper.activeIndex;
                     var lastIndexSlide = slides.length - 1,
                         trueIndexSlide = slides.length - 2;
+                    /*loop 处理*/
                     [].forEach.call(slides, function (item, index) {
                         item.id = '';
                         if (curIndex === index) {
@@ -341,6 +283,29 @@ var swiperRender = (function () {
                             }
                         }
                     })
+                    /*打字处理*/
+                    var str = '本人做事有耐心，爱思考，适应能力强，注重团队合作！爱学习爱分享，轻度代码洁癖，希望能成为贵公司的一员，共同探索代码的灵动世界！';
+                    var n = 0;
+
+
+
+                    console.log(curIndex)
+
+                    if ((curIndex == 0) || (curIndex == trueIndexSlide)) {
+                        $content.html('');
+                        function type() {
+                            $content.html(str.substr(0, n));
+                            if (n > str.length) return;
+                            n++;
+                            setTimeout(function () {
+                                type();
+                            }, 150);
+                        }
+                        setTimeout(function () {
+                            type();
+                        }, 2000);
+                        console.log($content.html)
+                    }
                 }
 
             });
@@ -348,33 +313,27 @@ var swiperRender = (function () {
             mySwiper.slideTo(index, 0);
 
             //->给返回按钮绑定单击事件
-            // if (lx === 100) {
-                $return.on('click', function () {
-                    $swiper.css('display', 'none');
-                    $('#cube').css('display', 'block');
-                });
-            // } else {
-            //     $return.singleTap(function () {
-            //         $swiper.css('display', 'none');
-            //         $('#cube').css('display', 'block');
-            //     });
-            // }
+            $return.on('click', function () {
+                $swiper.css('display', 'none');
+                $('#cube').css('display', 'block');
+            });
+            /*singleTap*/
+            /*$return.singleTap(function () {
+             $swiper.css('display', 'none');
+             $('#cube').css('display', 'block');
+             });*/
+
         }
     }
 })();
 
 /*--控制显示--*/
 var urlObj = window.location.href.queryURLParameter(),
-    page = parseFloat(urlObj['page']),
-    lx = parseFloat(urlObj['lx']);
-// console.log(page)
+    page = parseFloat(urlObj['page']);
+
 page === 0 || isNaN(page) ? loadingRender.init() : null;
 page === 1 ? firstRender.init() : null;
 page === 2 ? cubeRender.init() : null;
 page === 3 ? swiperRender.init(1) : null;
 
-/*if (lx === 100) {
-    $('body').css('cursor', 'pointer');
-    FastClick.attach(document.body);
-}*/
 

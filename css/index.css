@@ -137,36 +137,36 @@ body {
     height: 100%;
 }
 
-.cube .cubeBox li:nth-child(1) {
-    background: url("../img/cube1.png") no-repeat;
+.cube .cubeBox li:nth-child(3) {
+    background: url("../img/cube3.png") no-repeat;
     background-size: 100% 100%;
     -webkit-transform: translateZ(2.55rem);
     transform: translateZ(2.55rem);
 }
 
-.cube .cubeBox li:nth-child(2) {
-    background: url("../img/cube5.png") no-repeat;
+.cube .cubeBox li:nth-child(1) {
+    background: url("../img/cube1.png") no-repeat;
     background-size: 100% 100%;
     -webkit-transform: rotateY(180deg) translateZ(2.55rem);
     transform: rotateY(180deg) translateZ(2.55rem);
 }
 
-.cube .cubeBox li:nth-child(3) {
-    background: url("../img/cube2.png") no-repeat;
+.cube .cubeBox li:nth-child(4) {
+    background: url("../img/cube4.png") no-repeat;
     background-size: 100% 100%;
     -webkit-transform: rotateY(90deg) translateZ(2.55rem);
     transform: rotateY(90deg) translateZ(2.55rem);
 }
 
-.cube .cubeBox li:nth-child(4) {
-    background: url("../img/cube4.png") no-repeat;
+.cube .cubeBox li:nth-child(2) {
+    background: url("../img/cube2.png") no-repeat;
     background-size: 100% 100%;
     -webkit-transform: rotateY(-90deg) translateZ(2.55rem);
     transform: rotateY(-90deg) translateZ(2.55rem);
 }
 
 .cube .cubeBox li:nth-child(5) {
-    background: url("../img/cube3.png") no-repeat;
+    background: url("../img/cube5.png") no-repeat;
     background-size: 100% 100%;
     -webkit-transform: rotateX(-90deg) translateZ(2.55rem);
     transform: rotateX(-90deg) translateZ(2.55rem);
