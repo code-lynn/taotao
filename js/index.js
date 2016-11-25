@@ -195,7 +195,7 @@ var cubeRender = (function () {
             //->魔方区域的滑动--touch实现swipeUp
             $cubeBox.attr({
                 rotateX: -35,
-                rotateY: 45
+                rotateY: 135
             }).on('touchstart', start).on('touchmove', move).on('touchend', end);
 
             //->每一个页面的点击操作--singleTap
@@ -283,24 +283,23 @@ var swiperRender = (function () {
                         }
                     })
                     /*打字处理*/
-                    var str = '本人做事有耐心，爱思考，适应能力强，注重团队合作！爱学习爱分享，轻度代码洁癖，希望能成为贵公司的一员，共同探索代码的灵动世界！';
+                    var str = '本人工作有耐心，爱思考，适应能力强，注重团队合作！爱学习爱分享，轻度代码洁癖，希望能成为贵公司的一员，共同探索代码的灵动世界！';
                     var n = 0;
+                    function type() {
+                        $content.html(str.substr(0, n));
+                        if (n > str.length) return;
+                        n++;
+                        setTimeout(function () {
+                            type();
+                        }, 150);
+                    }
                     //console.log(curIndex)
                     if ((curIndex == 0) || (curIndex == trueIndexSlide)) {
                         $content.html('');
-                        function type() {
-                            $content.html(str.substr(0, n));
-                            if (n > str.length) return;
-                            n++;
-                            setTimeout(function () {
-                                type();
-                            }, 150);
-                        }
-
                         setTimeout(function () {
                             type();
                         }, 2000);
-                        console.log($content.html)
+                        // console.log($content.html)
                     }
                 }
 

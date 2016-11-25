@@ -25,9 +25,9 @@
         ~function () {
             var desW=640, /*640的设计稿*/
                     winW=document.documentElement.clientWidth;
-            if(winW>960){
-//                document.documentElement.clientWidth='640px';
-                $('document').css('clientWidth','960px');
+            if(winW>375){
+                document.documentElement.width='375px';
+                console.log(document.documentElement.width);
                 return;
             };
             document.documentElement.style.fontSize=winW/desW*100+'px';
@@ -279,11 +279,11 @@
                 <div class="right">
                     <div class="text1">
                         <h4>2010年9月至2014年6月</h4>
-                        <p>就读于河北科技师范学院。</p>
+                        <p>就读于河北科技师范学院，选修计算机应用技术。</p>
                     </div>
                     <div class="text2">
                         <h4>2014年7月至2016年6月</h4>
-                        <p>就职于河北杭萧钢构有限公司。</p>
+                        <p>就职于河北杭萧钢构有限公司，自学html，css，javascript。</p>
                     </div>
                     <div class="text3">
                         <h4>2010年9月至2014年6月</h4>
