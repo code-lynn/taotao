@@ -86,6 +86,9 @@ body {
     perspective: 1000px;
     background: url("../img/swiper/bg33.png") no-repeat center center;
     background-size: cover;
+    opacity: 0;
+    -webkit-transition: opacity .5s;
+    transition: opacity .5s;
 }
 
 .cube .tip {

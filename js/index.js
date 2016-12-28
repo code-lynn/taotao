@@ -191,7 +191,7 @@ var cubeRender = (function () {
 
     return {
         init: function () {
-            $cube.css('display', 'block');
+            $cube.css('display', 'block').css('opacity',1);
             //->魔方区域的滑动--touch实现swipeUp
             $cubeBox.attr({
                 rotateX: -35,
