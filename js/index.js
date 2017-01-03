@@ -281,26 +281,39 @@ var swiperRender = (function () {
                                     item.id = 'slide' + curIndex;
                             }
                         }
-                    })
+                    });
                     /*打字处理*/
-                    var str = '本人工作有耐心，爱思考，适应能力强，注重团队合作！爱学习爱分享，轻度代码洁癖，希望能成为贵公司的一员，共同探索代码的灵动世界！';
-                    var n = 0;
-                    function type() {
-                        $content.html(str.substr(0, n));
-                        if (n > str.length) return;
-                        n++;
-                        setTimeout(function () {
-                            type();
-                        }, 150);
-                    }
-                    //console.log(curIndex)
-                    if ((curIndex == 0) || (curIndex == trueIndexSlide)) {
-                        $content.html('');
-                        setTimeout(function () {
-                            type();
-                        }, 2000);
-                        // console.log($content.html)
-                    }
+                    ~function () {
+                        var str = '本人工作有耐心，爱思考，适应能力强，注重团队合作！爱学习爱分享，轻度代码洁癖，希望能成为贵公司的一员，共同探索代码的灵动世界！';
+                        var n = 0,timer=null;
+                        function type() {
+                            $content.html(str.substr(0, n));
+                            if (n > str.length){
+                                clearTimeout(timer);
+                                return;
+                            }
+                            n++;
+                            timer=setTimeout(function () {
+                                type();
+                            }, 150);
+                        }
+                        //console.log(curIndex)
+                        if (curIndex == trueIndexSlide) {
+                            $content.html('');
+                            clearTimeout(timer);
+                            setTimeout(function () {
+                                type();
+                            }, 2000);
+                            // console.log($content.html)
+                        }
+                        if (curIndex == 0) {
+                            $content.html('');
+                            setTimeout(function () {
+                                type();
+                            }, 2000);
+                            // console.log($content.html)
+                        }
+                    }();
                 }
 
             });
